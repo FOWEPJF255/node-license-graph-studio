@@ -1,8 +1,16 @@
-# Devpost submission draft
+# Devpost submission record — 03 License Repair
+
+Status checked on October 30, 2026: **SUBMITTED**, 5/5 steps complete, to the PayPal AI Hackathon. This file records the selected 03 license-repair entry; it does not describe the other unselected concepts.
+
+Public Devpost project: https://devpost.com/software/node-license-graph-studio
+
+Public source and MIT license: https://github.com/FOWEPJF255/node-license-graph-studio
 
 Hosted no-payment demo: https://fowepjf255.github.io/node-license-graph-studio/?lang=en
 
 Public walkthrough: https://youtu.be/R6wUhs-EXnA
+
+The hosted GitHub Pages build supports the dependency graph, minimum-cost repair preview, local no-payment unlock, and repaired ZIP export. PayPal Sandbox checkout and Ollama extraction require the local Node.js server and are not enabled on the hosted static build.
 
 ## About the project
 
@@ -18,7 +26,7 @@ You can import a GLB or JSON scene manifest. Missing evidence stays unverified. 
 
 ### How we built it
 
-The browser UI uses Three.js, Vite, and JavaScript. A deterministic dependency engine computes impact and solves the minimum-cost cover problem. A local Node.js server connects to Ollama for structured AI extraction and implements PayPal Sandbox Orders v2 for the first-party replacement bundle. Checkout binds each order to a quote and validates completed captures before granting an entitlement. The demo path is clearly marked and never claims a payment occurred.
+The browser UI uses Three.js, Vite, and JavaScript. A deterministic dependency engine computes impact and solves the minimum-cost cover problem. A local Node.js server connects to Ollama for structured AI extraction and implements PayPal Sandbox Orders v2 for the first-party replacement bundle. Checkout binds each order to a quote and validates the completed capture, amount, and currency before granting an entitlement. The demo path is clearly marked and never claims a payment occurred.
 
 ### Challenges
 
@@ -30,17 +38,14 @@ One shared repair can clear multiple blockers at once. The graph, exact optimize
 
 ### What's next
 
-Add project accounts and persistent storage, then expand evidence review and payment recovery for a hosted multi-user version.
+Add project accounts and persistent storage, then expand evidence review, webhook validation, and payment recovery for a hosted multi-user version.
 
 ## Suggested technologies
 
 JavaScript, Node.js, Three.js, Vite, PayPal, Ollama, Qwen, GLB
 
-## Video outline (under three minutes)
+## Published media and verification
 
-1. Show the 3D scene and license status. Select the shared material; highlight affected objects.
-2. Inspect the dependency graph and blocked export state.
-3. Preview the minimum-cost repair and compare before/after.
-4. Show optional AI extraction with a sample license excerpt and the required human confirmation.
-5. Demonstrate the local demo unlock and download/open the ZIP contents.
-6. If verified, show a real PayPal Sandbox checkout and completed capture; never imply the local demo unlock is a payment.
+The public 58-second YouTube video shows the dependency graph, shared-node repair preview, local no-payment unlock, and ZIP export. It does **not** show a live PayPal Sandbox checkout or live Qwen extraction. The Devpost story describes both integrations, and the repository provides their code and local setup instructions. Two screenshots are embedded in the Devpost story from `docs/screenshots/`; the optional Devpost gallery and file attachment are empty.
+
+On October 30, 2026, `npm test` passed all seven tests and `npm run build` passed. The public repository and hosted demo returned HTTP 200, the public YouTube watch page played the 58-second video, and Devpost still showed **SUBMITTED / 5/5**. A local Ollama `qwen2.5:7b` call extracted a verbatim license excerpt, returned commercial-use and redistribution booleans, and kept `reviewed: false`. The local Sandbox ledger retained one completed test order from the October 29 end-to-end checkout; no real funds were used. `.env` remains Git-ignored.

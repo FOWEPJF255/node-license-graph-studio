@@ -1,6 +1,6 @@
 # NODE · License Graph Studio
 
-面向 PayPal AI Hackathon 的「03 许可修复」本地可运行项目。它把场景物体、共享素材和许可凭据连成依赖图，找出覆盖全部阻断资源且总价最低的替换组合。当前为单人 MVP，默认只在本机运行。
+面向 PayPal AI Hackathon 的「03 许可修复」项目。它把场景物体、共享素材和许可凭据连成依赖图，找出覆盖全部阻断资源且总价最低的替换组合。当前为单人 MVP；[公开在线演示](https://fowepjf255.github.io/node-license-graph-studio/?lang=en)可体验依赖图、修复预览与无付款 ZIP 导出，[58 秒公开视频](https://youtu.be/R6wUhs-EXnA)展示这条流程。PayPal Sandbox 结算和 Ollama 提取需要运行下述本地 Node.js 服务，不在 GitHub Pages 上开放。
 
 ## 运行
 
@@ -13,7 +13,7 @@ npm run build
 npm run server
 ```
 
-浏览器打开 `http://127.0.0.1:4174`。点击共享资源可同时高亮引用它的物体；「预览修复」对照修复前后；「本地演示解锁」不产生交易，但可测试完整 ZIP 导出。ZIP 包含修改后的 GLB、程序生成的材质 PNG、警报 WAV、替换映射清单和素材使用许可。
+浏览器打开 `http://127.0.0.1:4174`；英文界面可用 `http://127.0.0.1:4174/?lang=en`。点击共享资源可同时高亮引用它的物体；「预览修复」对照修复前后；「本地演示解锁」不产生交易，但可测试完整 ZIP 导出。ZIP 包含修改后的 GLB、程序生成的材质 PNG、警报 WAV、替换映射清单和素材使用许可。
 
 导入支持 `.glb` 和项目 JSON 场景清单。GLB 的网格与共享材质会被解析到依赖图，所有未提供的许可先标为待核验；不会把导入素材误标为已授权。导入场景暂不进入自营素材包的 Sandbox 结算。JSON 应包含 `id`、`title`、`version`、`objects`、`assets`；物体需要 `id`、`name`、`assetIds`，素材需要 `id`、`name`、`type`、`usedBy`、`license`。可参照 `src/demo-data.js`。
 
