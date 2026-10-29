@@ -39,6 +39,8 @@ npm run server
 
 Do not commit `.env`. The unchanged built-in scene offers a $6.49 bundle of first-party, code-generated replacement assets. The server grants a purchase unlock only after a matching `COMPLETED` capture. On October 29, 2026, the complete Sandbox flow was verified with a test buyer: order creation, buyer approval, capture, amount validation, return to the app, and purchase unlock. No real funds were used. Local demo unlocks remain visibly separate from purchase entitlements.
 
+To obtain free test credentials, follow PayPal's [REST API setup guide](https://developer.paypal.com/api/get-started/): sign in to the Developer Dashboard, open **Apps & Credentials** in Sandbox mode, select the default REST app or create one, then copy its Client ID and Secret into your local `.env`. For a checkout test, use a **personal Sandbox account** as the buyer; the [Sandbox accounts guide](https://developer.paypal.com/sandbox-testing/accounts) explains where to find or create one. Use only Sandbox credentials and test balances. The hosted demo needs none of these credentials.
+
 For Vite development, use `npm run dev` and set `PUBLIC_ORIGIN=http://127.0.0.1:5173` in `.env` for the return URL. The built app uses port 4174.
 
 ## Implementation

@@ -35,6 +35,8 @@ npm run server
 
 不要提交 `.env`。内置示例场景的未修改版本可购买 `$6.49` 的自营程序生成替换素材包；导入或编辑后的场景不会自动售卖。结算后服务端只有在 `COMPLETED` 捕获记录、金额、币种和报价全部匹配时才返回解锁权益。2026 年 10 月 29 日已使用 Sandbox 测试买家完整验证下单、批准、捕获、金额核对、回跳与权益解锁；未使用真实资金。本地演示解锁与真实 Sandbox 权益分别标识。
 
+测试者可按 PayPal [REST API 入门说明](https://developer.paypal.com/api/get-started/)免费获取凭据：登录 Developer Dashboard，在 Sandbox 的 **Apps & Credentials** 中选择默认 REST 应用或新建应用，将 Client ID 和 Secret 填入本机 `.env`。结算时使用个人 Sandbox 买家账户；[Sandbox 账户说明](https://developer.paypal.com/sandbox-testing/accounts)介绍账户获取方式。仅使用测试凭据与虚拟余额；公开在线演示无需这些凭据。
+
 开发前端可运行 `npm run dev`（Vite 代理 API 到 4174）。此时如需测试 Sandbox 回跳，把 `.env` 中 `PUBLIC_ORIGIN` 改为 `http://127.0.0.1:5173`；直接运行构建版则保持 4174。
 
 ## 项目结构
