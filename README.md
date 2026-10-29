@@ -15,7 +15,7 @@ npm run build
 npm run server
 ```
 
-Open `http://127.0.0.1:4174`. Select a shared asset to highlight every object using it. Preview the repair, then use **Local demo unlock** to export a ZIP without a transaction. The ZIP contains the repaired GLB, generated material PNG, alert WAV, replacement manifest, and asset license.
+Open `http://127.0.0.1:4174/?lang=en` for the English interface (or use the language switch in the header). Select a shared asset to highlight every object using it. Preview the repair, then use **Local demo unlock** to export a ZIP without a transaction. The ZIP contains the repaired GLB, generated material PNG, alert WAV, replacement manifest, and asset license.
 
 The app accepts `.glb` and project JSON manifests. Imported meshes and shared materials become graph nodes. Missing license evidence remains unverified and blocks delivery. Imported or edited scenes cannot be purchased as the included asset bundle. See `src/demo-data.js` for the JSON structure.
 
@@ -35,7 +35,7 @@ cp .env.example .env
 npm run server
 ```
 
-Do not commit `.env`. The unchanged built-in scene offers a $6.49 bundle of first-party, code-generated replacement assets. The server grants a purchase unlock only after a matching `COMPLETED` capture. **A live Sandbox buyer approval and capture has not yet been verified with account credentials.** Local demo unlocks are visibly separate from purchase entitlements.
+Do not commit `.env`. The unchanged built-in scene offers a $6.49 bundle of first-party, code-generated replacement assets. The server grants a purchase unlock only after a matching `COMPLETED` capture. On October 29, 2026, the complete Sandbox flow was verified with a test buyer: order creation, buyer approval, capture, amount validation, return to the app, and purchase unlock. No real funds were used. Local demo unlocks remain visibly separate from purchase entitlements.
 
 For Vite development, use `npm run dev` and set `PUBLIC_ORIGIN=http://127.0.0.1:5173` in `.env` for the return URL. The built app uses port 4174.
 

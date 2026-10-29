@@ -5,6 +5,7 @@ import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
 import { zipSync, strToU8 } from 'fflate';
 import { demoScene, catalog as demoCatalog } from './demo-data.js';
 import { inspectScene, optimizeRepairs, applyRepairs } from './engine.js';
+import { localizePage, translateMessage } from './i18n.js';
 import './style.css';
 
 const app = document.querySelector('#app');
@@ -26,7 +27,7 @@ const inspection = () => inspectScene(sceneData);
 const plan = () => optimizeRepairs(sceneData, catalog);
 
 function shell() {
-  app.innerHTML = `<header class="topbar"><a class="brand" href="/" aria-label="NODE 首页"><span class="brand-mark">N<span>·</span></span><span>NODE <small>LICENSE STUDIO</small></span></a><div class="top-center"><span class="top-kicker">WORKSPACE / 001</span><span class="scene-name" id="scene-name"></span></div><div class="top-actions"><span id="connection" class="connection">检查连接中</span><button id="export-plan-top" class="header-button">导出分析 ↗</button></div></header>
+  app.innerHTML = `<header class="topbar"><a class="brand" href="/" aria-label="NODE 首页"><span class="brand-mark">N<span>·</span></span><span>NODE <small>LICENSE STUDIO</small></span></a><div class="top-center"><span class="top-kicker">WORKSPACE / 001</span><span class="scene-name" id="scene-name"></span></div><div class="top-actions"><a class="lang-link" href="${document.documentElement.lang === 'en' ? '?lang=zh' : '?lang=en'}">${document.documentElement.lang === 'en' ? '中文' : 'EN'}</a><span id="connection" class="connection">检查连接中</span><button id="export-plan-top" class="header-button">导出分析 ↗</button></div></header>
   <div class="layout"><aside class="sidebar"><div class="sidebar-head"><span class="eyebrow">SCENE FILES</span><span class="side-count" id="object-count"></span></div><div class="upload-zone"><label class="upload-label" for="scene-upload"><span class="upload-symbol">↥</span><strong>导入场景</strong><small>.glb 或 .json · 本地解析</small></label><input id="scene-upload" type="file" accept=".glb,.gltf,.json,model/gltf-binary,application/json"><button id="reset-demo" class="text-button">重载示例场景 ↗</button></div><div class="side-section"><div class="side-title">场景对象 <span id="object-total"></span></div><div id="object-list"></div></div><div class="side-section"><div class="side-title">共享资源 <span id="asset-total"></span></div><div id="asset-list"></div></div><div class="side-foot"><div class="mini-rule"></div><p>用途环境</p><strong>商业游戏发布</strong><span>许可必须覆盖商业使用及随作品再分发</span></div></aside>
   <main class="workspace"><div class="workspace-title"><div><div class="eyebrow">01 / SCENE INTELLIGENCE</div><h1>看见每一个许可依赖<span class="title-period">.</span></h1><p>选择共享资源，查看它同时阻断了哪些物体。</p></div><div class="scene-tag">3D ASSET MAP <span class="tag-dot"></span> LOCAL</div></div>
   <section class="viewport-card" aria-label="场景资产分布预览"><div class="viewport-top"><span><span class="live-dot"></span> 场景资产分布预览</span><span>拖动旋转 · 滚轮缩放</span></div><div id="scene-canvas"></div><div class="viewport-overlay"><div class="overlay-kicker">SELECTED RESOURCE</div><strong id="overlay-name"></strong><span id="overlay-impact"></span></div><div class="viewport-legend"><span><i class="legend-box affected"></i> 受影响物体</span><span><i class="legend-box safe"></i> 其他物体</span></div></section>
@@ -79,6 +80,7 @@ function render() {
   document.querySelector('#export-repaired').disabled = !after.ready || (!unlocked && repair.options.length > 0);
   document.querySelector('#checkout-note').textContent = unlocked ? (demoUnlocked ? '演示权益：仅在此页面有效，不代表付款。' : 'Sandbox 已完成捕获并核对金额。') : paypalReady ? 'Sandbox 订单仅针对未经修改的内置示例场景；导入或编辑后的场景暂不售卖。' : 'Sandbox 尚未配置。可先体验本地演示解锁。';
   update3D(selected);
+  localizePage();
 }
 
 function renderGraph(result, selected, repair) {
@@ -207,7 +209,7 @@ async function restoreEntitlement() {
     else sessionStorage.removeItem('completedOrderId');
   } catch { /* API is offline; no entitlement is inferred */ }
 }
-function notify(text) { message = text; const toast = document.querySelector('#toast'); toast.textContent = message; toast.classList.add('visible'); setTimeout(() => toast.classList.remove('visible'), 5000); }
+function notify(text) { message = translateMessage(text); const toast = document.querySelector('#toast'); toast.textContent = message; toast.classList.add('visible'); setTimeout(() => toast.classList.remove('visible'), 5000); }
 function resetDemo() { sceneData = structuredClone(demoScene); catalog = demoCatalog; selectedId = 'metal-tex'; previewRepair = false; unlocked = false; demoUnlocked = false; imported3D = null; buildDemo3D(); render(); notify('已重载示例场景。'); }
 
 async function onUpload(event) {

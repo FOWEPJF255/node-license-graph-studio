@@ -22,11 +22,11 @@ The biggest design challenge was separating AI interpretation from license autho
 
 ### Accomplishments and learning
 
-One shared repair can clear multiple blockers at once. The graph, exact optimizer, and export make that effect inspectable. We learned to make uncertainty visible and to bind payment state to a specific deliverable rather than a generic success message.
+One shared repair can clear multiple blockers at once. The graph, exact optimizer, and export make that effect inspectable. We verified the full PayPal Sandbox flow with a test buyer, from order creation and approval to completed capture and unlock. We learned to make uncertainty visible and to bind payment state to a specific deliverable rather than a generic success message.
 
 ### What's next
 
-Verify the complete buyer-approved PayPal Sandbox flow with credentials, add project accounts and persistent storage, and expand evidence review and payment recovery for a hosted multi-user version.
+Add project accounts and persistent storage, then expand evidence review and payment recovery for a hosted multi-user version.
 
 ## Suggested technologies
 
