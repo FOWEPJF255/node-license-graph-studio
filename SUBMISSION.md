@@ -1,5 +1,9 @@
 # Devpost submission draft
 
+Hosted no-payment demo: https://fowepjf255.github.io/node-license-graph-studio/?lang=en
+
+Public walkthrough: https://youtu.be/R6wUhs-EXnA
+
 ## About the project
 
 ### Inspiration

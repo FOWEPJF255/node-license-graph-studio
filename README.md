@@ -4,6 +4,8 @@ NODE helps 3D creators find and repair licensing blockers before delivering a sc
 
 This is a local, single-user MVP for the PayPal AI Hackathon. The included scene and replacement assets are generated in code. Inspection and local demo export work without a PayPal account or AI model.
 
+Try the [hosted, no-payment demo](https://fowepjf255.github.io/node-license-graph-studio/?lang=en). It runs the graph, repair preview, and local ZIP export in the browser. PayPal Sandbox checkout and Ollama extraction require the local Node.js server below; they are not enabled on GitHub Pages. The [58-second walkthrough](https://youtu.be/R6wUhs-EXnA) shows the demo flow.
+
 ## Run
 
 Requires Node.js 24 or later.
